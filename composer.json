@@ -1,0 +1,40 @@
+{
+  "name": "searchili/searchili-client-php",
+  "description": "Client for SearChili search services",
+  "type": "library",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Ali Jafari",
+      "email": "ali@searchi.li"
+    }
+  ],
+  "keywords": [
+    "API",
+    "Search",
+    "SearChili",
+    "SearChili client",
+    "SearChili php client",
+    "SearChili sdk",
+    "SearChili php sdk"
+  ],
+  "require": {
+    "php": ">=5.6",
+    "ext-curl": "*",
+    "ext-json": "*"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "5.5.*"
+  },
+  "autoload": {
+    "psr-4": {
+      "SearChili\\": [
+        "src",
+        "test"
+      ]
+    }
+  },
+  "scripts": {
+    "test": "./vendor/bin/phpunit"
+  }
+}
