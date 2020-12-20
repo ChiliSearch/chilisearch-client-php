@@ -3,6 +3,8 @@ PHP client for SearChili API
 
 [![Build Status](https://travis-ci.com/SearChili/searchili-client-php.svg?branch=main)](https://travis-ci.com/github/SearChili/searchili-client-php)
 [![Packagist](https://img.shields.io/packagist/v/SearChili/searchili-client-php.svg?style=flat-square)](https://github.com/searchili/searchili-client-php)
+[![Latest Stable Version](https://poser.pugx.org/searchili/searchili-client-php/v)](https://packagist.org/packages/searchili/searchili-client-php)
+[![License](https://poser.pugx.org/searchili/searchili-client-php/license)](https://packagist.org/packages/searchili/searchili-client-php)
 
 > ### Requirements
 
