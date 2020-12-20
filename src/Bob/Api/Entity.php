@@ -85,9 +85,14 @@ class Entity extends Api
      * @return string[]
      * @throws RequestException
      */
-    public function getAll()
+    public function getAll($page = 1)
     {
-        $response = $this->client->get('entity');
+        $response = $this->client->get(
+            'entity',
+            [
+                'page' => $page,
+            ]
+        );
         if ($response->getStatusCode() == 200) {
             return $response->getContent();
         }
