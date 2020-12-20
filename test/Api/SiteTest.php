@@ -4,7 +4,7 @@ namespace SearChiliTest\Api;
 
 use PHPUnit\Framework\TestCase;
 use SearChili\Api\Site;
-use SearChili\Client;
+use SearChili\Alice\Client;
 use SearChili\Exception\RequestException;
 use SearChili\Handler\Response;
 

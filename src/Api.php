@@ -1,8 +1,7 @@
 <?php
 
-namespace SearChili\Api;
+namespace SearChili;
 
-use SearChili\ClientInterface;
 
 abstract class Api
 {

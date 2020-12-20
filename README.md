@@ -49,6 +49,25 @@ The API methods that can be invoked:
 
 The following is a small example of how this library can be used.
 
+
+> #### Alice
+> ##### Search
+
+```php
+<?php
+
+require_once "vendor/autoload.php";
+
+use SearChili\Alice\Client as SearChiliAliceClient;
+
+$client = new SearChiliAliceClient('<apiKey>');
+
+$entities = $client->entity->search('query');
+print_r($entities);
+```
+
+
+> #### Bob
 > ##### Get authenticated site info
 
 ```php
@@ -56,40 +75,31 @@ The following is a small example of how this library can be used.
 
 require_once "vendor/autoload.php";
 
-use SearChili\Client as SearChiliClient;
+use SearChili\Bob\Client as SearChiliBobClient;
 
-$client = new SearChiliClient('<apiKey>', '<apiSecret>');
+$client = new SearChiliBobClient('<apiSecret>');
 
 $response = $client->site->get();
-var_dump($response->toArray());
-```
-
-> ##### Search
-
-```php
-$entities = $client->entity->search('query');
-foreach ($entities as $entity) {
-    var_dump($entity);
-}
+print_r($response->toArray());
 ```
 
 > ##### Store
 
 ```php
-$result = $client->entity->store(
+$result = $aliceClient->entity->store(
     1, // ID
     'Example Title', // Title
     'http://domain.com/article-1', // Link
     'This is excerpt', // Excerpt
     'This will be the long body of this amazing article.' // Body
 );
-var_dump($result);
+print_r($result);
 ```
 
 > ##### Delete
 
 ```php
-$result = $client->entity->delete(1);
+$result = $aliceClient->entity->delete(1);
 var_dump($result);
 ```
 

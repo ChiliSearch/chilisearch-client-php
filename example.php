@@ -2,9 +2,24 @@
 
 require_once "vendor/autoload.php";
 
-use SearChili\Client as SearChiliClient;
+use SearChili\Alice\Client as SearChiliAliceClient;
+use SearChili\Bob\Client as SearChiliBobClient;
 
-$client = new SearChiliClient('8fde6f96-ede2-4601-9804-23502916f1e5', 'ba8ea031-7942-466d-8dd7-39285af69466');
+## Alice
+$aliceClient = new SearChiliAliceClient('88a1e142-f297-4237-bf6c-d7a23609033c');
 
-$response = $client->site->get();
-var_dump($response->toArray());
+$response = $aliceClient->entity->search('test');
+print_r($response);
+
+
+## Bob
+$bobClient = new SearChiliBobClient('f9c68e53-30c0-4d36-b23e-bd6303aa3c79');
+
+$response = $bobClient->site->get();
+print_r($response);
+
+$response = $bobClient->entity->get('1000');
+print_r($response);
+
+$response = $bobClient->entity->getAll();
+print_r($response);

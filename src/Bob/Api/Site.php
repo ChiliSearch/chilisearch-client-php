@@ -1,7 +1,8 @@
 <?php
 
-namespace SearChili\Api;
+namespace SearChili\Bob\Api;
 
+use SearChili\Api;
 use SearChili\Exception\RequestException;
 use SearChili\Model\Site as SiteModel;
 

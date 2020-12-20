@@ -3,8 +3,8 @@
 namespace SearChiliTest\Api;
 
 use PHPUnit\Framework\TestCase;
+use SearChili\Alice\Client;
 use SearChili\Api\Entity;
-use SearChili\Client;
 use SearChili\Exception\RequestException;
 use SearChili\Handler\Response;
 

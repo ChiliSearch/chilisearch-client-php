@@ -1,58 +1,23 @@
 <?php
 
+
 namespace SearChili;
 
-use SearChili\Api\Entity;
-use SearChili\Api\Site;
+
 use SearChili\Exception\Exception;
 use SearChili\Handler\Curl;
 use SearChili\Handler\Http;
 
-/**
- * Class Client
- * @property Site $site
- * @property Entity $entity
- * @package SearChili
- */
-class Client implements ClientInterface
+abstract class AbstractClient implements ClientInterface
 {
     /**
-     * @var string
+     * apiKey or apiSecret
+     * @return string
      */
-    const BASE_URI = 'https://api.searchi.li/alice/v1/';
-
-    /**
-     * @var array Items via __get
-     */
-    const API_ITEMS = [
-        'site' => Site::class,
-        'entity' => Entity::class,
-    ];
-
-    /**
-     * @var string
-     */
-    private $apiKey;
-
-    /**
-     * @var string
-     */
-    private $apiSecret;
-
-    /**
-     * Client constructor.
-     * @param string $apiKey
-     * @param string $apiSecret
-     */
-    public function __construct($apiKey, $apiSecret = null)
-    {
-        $this->apiKey = $apiKey;
-        $this->apiSecret = $apiSecret;
-    }
+    abstract protected function getApiBearerToken();
 
     /**
      * Request GET
-     * @method GET
      * @param string $route
      * @param array $params
      * @return string
@@ -66,7 +31,6 @@ class Client implements ClientInterface
 
     /**
      * Request POST
-     * @method POST
      * @param string $route
      * @param array $data
      * @return string
@@ -80,7 +44,6 @@ class Client implements ClientInterface
 
     /**
      * Request PUT
-     * @method PUT
      * @param string $route
      * @param array $data
      * @return string
@@ -94,7 +57,6 @@ class Client implements ClientInterface
 
     /**
      * Request DELETE
-     * @method DELETE
      * @param string $route
      * @return string
      */
@@ -115,13 +77,11 @@ class Client implements ClientInterface
     public function buildRequest($route, $method, $params = [], $data = [])
     {
         $resource = new Curl();
-        $query = $this->query(array_merge($params, ['apiKey' => $this->apiKey]));
-        if ($this->apiSecret) {
-            $resource->addHeader(sprintf('Authorization: Bearer %s', $this->apiSecret));
-        }
+        $query = $this->query($params);
+        $resource->addHeader(sprintf('Authorization: Bearer %s', $this->getApiBearerToken()));
         $resource->addHeader('Content-type: application/json');
         $resource->setMethod($method);
-        $url = sprintf('%s%s%s', self::BASE_URI, $route, $query);
+        $url = sprintf('%s%s%s', static::BASE_URI, $route, $query);
         $resource->setUrl($url);
         if (!empty($data)) {
             $resource->setBody($data);;

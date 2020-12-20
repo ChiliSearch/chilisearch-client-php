@@ -2,9 +2,9 @@
 namespace SearChiliTest;
 
 use PHPUnit\Framework\TestCase;
+use SearChili\Alice\Client as AliceClient;
 use SearChili\Api\Entity;
 use SearChili\Api\Site;
-use SearChili\Client;
 use SearChili\Exception\Exception;
 use SearChili\Handler\Curl;
 use SearChili\Handler\Http;
@@ -18,7 +18,7 @@ class ClientTest extends TestCase
 
     protected function setUp()
     {
-        $this->client = new Client('8fde6f96-ede2-4601-9804-23502916f1e5', 'ba8ea031-7942-466d-8dd7-39285af69466');
+        $this->client = new AliceClient('8fde6f96-ede2-4601-9804-23502916f1e5');
     }
 
     /**
@@ -28,7 +28,7 @@ class ClientTest extends TestCase
     {
         $this->assertAttributeSame('8fde6f96-ede2-4601-9804-23502916f1e5', 'apiKey', $this->client);
         $this->assertAttributeSame('ba8ea031-7942-466d-8dd7-39285af69466', 'apiSecret', $this->client);
-        $this->assertSame('https://api.searchi.li/alice/v1/', Client::BASE_URI);
+        $this->assertSame('https://api.searchi.li/alice/v1/', AliceClient::BASE_URI);
     }
 
     /**
