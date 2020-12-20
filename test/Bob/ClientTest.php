@@ -1,10 +1,10 @@
 <?php
-namespace SearChiliTest;
+namespace SearChiliTest\Bob;
 
 use PHPUnit\Framework\TestCase;
-use SearChili\Alice\Client as AliceClient;
-use SearChili\Api\Entity;
-use SearChili\Api\Site;
+use SearChili\Bob\Api\Entity;
+use SearChili\Bob\Api\Site;
+use SearChili\Bob\Client as BobClient;
 use SearChili\Exception\Exception;
 use SearChili\Handler\Curl;
 use SearChili\Handler\Http;
@@ -12,13 +12,13 @@ use SearChili\Handler\Http;
 class ClientTest extends TestCase
 {
     /**
-     * @var Client
+     * @var BobClient
      */
     private $client;
 
     protected function setUp()
     {
-        $this->client = new AliceClient('8fde6f96-ede2-4601-9804-23502916f1e5');
+        $this->client = new BobClient('8fde6f96-ede2-4601-9804-23502916f1e5');
     }
 
     /**
@@ -26,9 +26,8 @@ class ClientTest extends TestCase
      */
     public function constructShouldConfigureTheAttributes()
     {
-        $this->assertAttributeSame('8fde6f96-ede2-4601-9804-23502916f1e5', 'apiKey', $this->client);
-        $this->assertAttributeSame('ba8ea031-7942-466d-8dd7-39285af69466', 'apiSecret', $this->client);
-        $this->assertSame('https://api.searchi.li/alice/v1/', AliceClient::BASE_URI);
+        $this->assertAttributeSame('8fde6f96-ede2-4601-9804-23502916f1e5', 'apiSecret', $this->client);
+        $this->assertSame('https://api.searchi.li/bob/v1/', BobClient::BASE_URI);
     }
 
     /**

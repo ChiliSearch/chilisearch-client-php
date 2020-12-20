@@ -1,10 +1,10 @@
 <?php
 
-namespace SearChiliTest\Api;
+namespace SearChiliTest\Bob\Api;
 
 use PHPUnit\Framework\TestCase;
-use SearChili\Api\Site;
 use SearChili\Alice\Client;
+use SearChili\Bob\Api\Site;
 use SearChili\Exception\RequestException;
 use SearChili\Handler\Response;
 
