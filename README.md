@@ -2,12 +2,29 @@
 PHP client for SearChili API
 
 [![Build Status](https://travis-ci.com/SearChili/searchili-client-php.svg?branch=main)](https://travis-ci.com/github/SearChili/searchili-client-php)
+[![Packagist](https://img.shields.io/packagist/v/SearChili/searchili-client-php.svg?style=flat-square)](https://github.com/searchili/searchili-client-php)
 
 > ### Requirements
 
 - PHP 5.6+
 - Autoloader compatible with PSR-4
 - PHP must be compiled with lib-curl
+
+> ### Installation
+
+To install the library just add it via [composer](https://getcomposer.org/download/)
+
+```composer
+composer require SearChili/searchili-client-php
+```
+
+Or in composer.json
+
+```json
+{
+    "SearChili/searchili-client-php": "^1.0"
+}
+```
 
 > ### Tests
 
